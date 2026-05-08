@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  inventory-pu:
+    build: ./inventory-pu
+    container_name: nodeD-inventory-pu
+    ports:
+      - "8084:8084"
+    environment:
+      - PORT=8084
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}

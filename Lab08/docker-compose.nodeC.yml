@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  order-pu:
+    build: ./order-pu
+    container_name: nodeC-order-pu
+    ports:
+      - "8083:8083"
+    environment:
+      - PORT=8083
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - INVENTORY_API=${INVENTORY_API}
