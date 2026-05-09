@@ -814,3 +814,111 @@ button:disabled {
     padding: 0 16px;
   }
 }
+
+/* ── LoginPage ─────────────────────────────────────── */
+/* Thêm các rule này vào App.css */
+
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.login-logo {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.login-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  color: #111;
+}
+
+.login-subtitle {
+  font-size: 0.95rem;
+  color: #888;
+  margin: 0 0 2rem;
+}
+
+.login-user-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.login-user-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 1.25rem 1rem;
+  border: 1.5px solid #eee;
+  border-radius: 14px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.login-user-btn:hover {
+  border-color: #f97316;
+  background: #fff7f0;
+  transform: translateY(-2px);
+}
+
+.login-user-avatar {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.login-user-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111;
+}
+
+.login-user-id {
+  font-size: 0.75rem;
+  color: #aaa;
+  font-family: monospace;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-user-id {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.nav-logout-btn {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  color: #666;
+}
+
+.nav-logout-btn:hover {
+  background: #fee2e2;
+  border-color: #f97316;
+  color: #c00;
+}

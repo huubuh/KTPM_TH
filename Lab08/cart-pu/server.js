@@ -11,7 +11,7 @@ const REDIS_HOST = process.env.REDIS_HOST || "localhost";
 const REDIS_PORT = process.env.REDIS_PORT || 6379;
 
 const client = redis.createClient({
-  socket: { host: REDIS_HOST, port: REDIS_PORT }
+  socket: { host: REDIS_HOST, port: REDIS_PORT },
 });
 
 function log(msg, data = {}) {
@@ -23,7 +23,7 @@ app.post("/cart/add", async (req, res) => {
   try {
     const { userId, productId, quantity } = req.body;
 
-    if (!userId || !productId || !quantity) {
+    if (!userId || !productId || quantity === undefined || quantity === 0) {
       return res.status(400).json({ message: "Missing fields" });
     }
 
@@ -31,17 +31,33 @@ app.post("/cart/add", async (req, res) => {
     const cartRaw = await client.get(cartKey);
     const cart = cartRaw ? JSON.parse(cartRaw) : [];
 
-    const existing = cart.find(item => item.productId === productId);
+    const existing = cart.find((item) => item.productId === productId);
+
+    let totalQuantity = 0;
+    let action = quantity > 0 ? "INCREASE" : "DECREASE";
 
     if (existing) {
       existing.quantity += quantity;
+      totalQuantity = existing.quantity;
+      if (existing.quantity <= 0) {
+        const index = cart.findIndex((item) => item.productId === productId);
+        cart.splice(index, 1);
+        totalQuantity = 0;
+        action = "REMOVED";
+      }
     } else {
-      cart.push({ productId, quantity });
+      if (quantity > 0) {
+        cart.push({ productId, quantity });
+      }
+      totalQuantity = quantity;
+      action = "ADDED";
     }
 
     await client.set(cartKey, JSON.stringify(cart));
 
-    log("Add to cart", { userId, productId, quantity });
+    log(
+      `[${action}] productId=${productId} | change=${quantity > 0 ? "+" : ""}${quantity} | total=${totalQuantity} | userId=${userId}`,
+    );
 
     res.json({ message: "Added to cart", cart });
   } catch (err) {

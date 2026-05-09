@@ -8,6 +8,7 @@ interface CartPageProps {
   onCheckout: () => void;
   onGoHome: () => void;
   onAddMore: (productId: string) => void;
+  onDecrease: (productId: string) => void;
 }
 
 export default function CartPage({
@@ -17,6 +18,7 @@ export default function CartPage({
   onCheckout,
   onGoHome,
   onAddMore,
+  onDecrease,
 }: CartPageProps) {
   const getProduct = (id: string) => products.find((p) => p.id === id);
 
@@ -47,10 +49,10 @@ export default function CartPage({
       <h2 className="page-title">Giỏ hàng ({cartCount} sản phẩm)</h2>
 
       <div className="cart-layout">
-        {/* Items */}
         <div className="cart-items">
           {cart.map((item) => {
             const p = getProduct(item.productId);
+
             return (
               <div key={item.productId} className="cart-row">
                 <div className="cart-row-icon">
@@ -71,10 +73,15 @@ export default function CartPage({
                 </div>
 
                 <div className="qty-control">
-                  <button className="qty-btn" disabled title="Không thể giảm">
+                  <button
+                    className="qty-btn"
+                    onClick={() => onDecrease(item.productId)}
+                  >
                     −
                   </button>
+
                   <span className="qty-num">{item.quantity}</span>
+
                   <button
                     className="qty-btn"
                     onClick={() => onAddMore(item.productId)}
@@ -91,13 +98,13 @@ export default function CartPage({
           })}
         </div>
 
-        {/* Summary */}
         <div className="cart-summary">
           <h3>Tóm tắt đơn hàng</h3>
 
           <div className="summary-lines">
             {cart.map((item) => {
               const p = getProduct(item.productId);
+
               return (
                 <div key={item.productId} className="summary-item">
                   <span className="summary-item-name">

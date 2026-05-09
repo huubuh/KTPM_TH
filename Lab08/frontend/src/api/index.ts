@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const PRODUCT_API = "http://192.168.0.101:8081";
-const CART_API = "http://192.168.0.101:8082";
-const ORDER_API = "http://192.168.0.101:8083";
+const PRODUCT_API = "http://172.16.64.87:8081";
+const CART_API = "http://172.16.40.214:8082";
+const ORDER_API = "http://172.16.40.124:8083";
 
 export interface Product {
   id: string;

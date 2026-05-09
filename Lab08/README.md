@@ -7,12 +7,12 @@ Mỗi máy sẽ chạy 1 node.
 
 ## 0. Node phân công
 
-| Node | Chạy container        |
-| ---- | --------------------- |
-| A    | frontend + product-pu |
-| B    | cart-pu               |
-| C    | order-pu              |
-| D    | inventory-pu          |
+| Node | Chạy container        | Thành viên        | MSSV     |
+| ---- | --------------------- | ----------------- | -------- |
+| A    | frontend + product-pu | Nguyễn Văn Huy    | 22667141 |
+| B    | cart-pu               | Mai Đức Trường    | 22714791 |
+| C    | order-pu              | Lê Vũ Thanh Dương | 22643441 |
+| D    | inventory-pu          | Lê Vũ Thanh Dương | 22643441 |
 
 ---
 

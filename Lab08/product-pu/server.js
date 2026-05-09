@@ -35,7 +35,7 @@ async function seedProducts() {
         "https://res.cloudinary.com/dicknpzdb/image/upload/v1778267177/cbedl0sbt40q7ahivdvc.webp",
       name: "Tai nghe Bluetooth AirPods 4 Chính hãng",
       price: 4490000,
-      stock: 100,
+      stock: 10,
     },
     {
       id: "p2",

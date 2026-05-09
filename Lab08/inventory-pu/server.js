@@ -13,8 +13,8 @@ const REDIS_PORT = process.env.REDIS_PORT || 6379;
 const client = redis.createClient({
   socket: {
     host: REDIS_HOST,
-    port: REDIS_PORT
-  }
+    port: REDIS_PORT,
+  },
 });
 
 function log(msg, data = {}) {
@@ -43,16 +43,16 @@ app.get("/stock/:productId", async (req, res) => {
 
     log("GET /stock", {
       productId,
-      stock: Number(stock || 0)
+      stock: Number(stock || 0),
     });
 
     res.json({
       productId,
-      stock: Number(stock || 0)
+      stock: Number(stock || 0),
     });
   } catch (err) {
     res.status(500).json({
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -63,41 +63,41 @@ app.post("/stock/decrease", async (req, res) => {
 
     if (!productId || !quantity || Number(quantity) <= 0) {
       return res.status(400).json({
-        message: "productId and quantity are required"
+        message: "productId and quantity are required",
       });
     }
 
     const newStock = await client.eval(decreaseStockScript, {
       keys: [`stock:${productId}`],
-      arguments: [String(quantity)]
+      arguments: [String(quantity)],
     });
 
     if (newStock === -1) {
       log("Not enough stock", {
         productId,
-        quantity
+        quantity,
       });
 
       return res.status(400).json({
         message: "Not enough stock",
-        productId
+        productId,
       });
     }
 
     log("Stock decreased", {
       productId,
       quantity,
-      newStock
+      newStock,
     });
 
     res.json({
       message: "Stock decreased",
       productId,
-      newStock
+      newStock,
     });
   } catch (err) {
     res.status(500).json({
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -108,7 +108,7 @@ app.post("/admin/stock", async (req, res) => {
 
     if (!productId || stock === undefined || Number(stock) < 0) {
       return res.status(400).json({
-        message: "productId and stock are required"
+        message: "productId and stock are required",
       });
     }
 
@@ -116,17 +116,17 @@ app.post("/admin/stock", async (req, res) => {
 
     log("Admin set stock", {
       productId,
-      stock: Number(stock)
+      stock: Number(stock),
     });
 
     res.json({
       message: "Stock updated",
       productId,
-      stock: Number(stock)
+      stock: Number(stock),
     });
   } catch (err) {
     res.status(500).json({
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -134,7 +134,7 @@ app.post("/admin/stock", async (req, res) => {
 client.connect().then(() => {
   log("Connected Redis", {
     REDIS_HOST,
-    REDIS_PORT
+    REDIS_PORT,
   });
 
   app.listen(PORT, () => {

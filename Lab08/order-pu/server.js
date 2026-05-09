@@ -54,7 +54,15 @@ app.post("/checkout", async (req, res) => {
     };
 
     await client.set(`order:${order.orderId}`, JSON.stringify(order));
-
+    // publish event tạo đơn hàng thành công
+    await client.publish(
+      "order-events",
+      JSON.stringify({
+        type: "ORDER_CREATED",
+        message: "Order created successfully",
+        order,
+      }),
+    );
     // clear cart
     await client.del(cartKey);
 
