@@ -1,0 +1,418 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f6f7f8;
+  color: #1f2937;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+.app {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.topbar {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+}
+
+.topbar h2 {
+  margin: 0;
+  color: #00b14f;
+}
+
+.topbar p {
+  margin: 4px 0 0;
+  color: #6b7280;
+}
+
+.user-box {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.hero {
+  min-height: 230px;
+  border-radius: 26px;
+  background:
+    linear-gradient(90deg, rgba(0, 177, 79, 0.95), rgba(0, 177, 79, 0.65)),
+    url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 36px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  max-width: 620px;
+  font-size: 38px;
+  margin: 8px 0;
+}
+
+.hero p {
+  max-width: 560px;
+  margin: 0;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 10px !important;
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 22px;
+  align-items: start;
+}
+
+.section,
+.cart-card,
+.payment-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 22px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section h2,
+.cart-card h2,
+.payment-card h2 {
+  margin: 0;
+}
+
+.section-header p,
+.muted {
+  color: #6b7280;
+  margin: 6px 0 0;
+}
+
+.search-input {
+  width: 280px;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  outline: none;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.food-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #edf0f2;
+  transition: 0.25s;
+}
+
+.food-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+.food-img-wrap {
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.discount-badge {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: #00b14f;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.food-content {
+  padding: 14px;
+}
+
+.food-content h3 {
+  margin: 0 0 6px;
+}
+
+.food-desc,
+.food-meta {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.food-meta {
+  display: flex;
+  gap: 6px;
+}
+
+.food-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  color: #00b14f;
+  font-weight: 800;
+  margin: 0;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary,
+.btn-checkout {
+  background: #00b14f;
+  color: white;
+}
+
+.btn-outline {
+  background: white;
+  color: #00b14f;
+  border: 1px solid #00b14f;
+}
+
+.full {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.cart-card,
+.payment-card {
+  position: sticky;
+  top: 20px;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 28px 0;
+  color: #6b7280;
+}
+
+.empty-cart p {
+  font-size: 42px;
+  margin: 0;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid #edf0f2;
+  padding-bottom: 14px;
+}
+
+.cart-item img {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.cart-info {
+  flex: 1;
+}
+
+.cart-info h4 {
+  margin: 0 0 4px;
+}
+
+.cart-info p {
+  margin: 0 0 8px;
+  color: #00b14f;
+  font-weight: 700;
+}
+
+.qty-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.qty-row button {
+  border: none;
+  border-radius: 8px;
+  background: #eef2f3;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  color: #ef4444;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  font-size: 18px;
+}
+
+.btn-checkout {
+  width: 100%;
+  padding: 14px;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 14px;
+}
+
+.history-item p {
+  margin: 4px 0 0;
+  color: #6b7280;
+}
+
+.status {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 420px;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  background:
+    linear-gradient(90deg, rgba(0, 177, 79, 0.95), rgba(0, 177, 79, 0.65)),
+    url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+  background-size: cover;
+  background-position: center;
+}
+
+.login-left {
+  color: white;
+}
+
+.login-left h1 {
+  font-size: 56px;
+  margin: 0 0 12px;
+}
+
+.login-left p {
+  max-width: 560px;
+  font-size: 18px;
+}
+
+.login-card {
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.login-card h2 {
+  margin: 0;
+}
+
+.login-card p {
+  color: #6b7280;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+}
+
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-card,
+  .payment-card {
+    position: static;
+  }
+
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+}
